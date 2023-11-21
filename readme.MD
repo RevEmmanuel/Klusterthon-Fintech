@@ -2,13 +2,15 @@
 This is a Node.js project that allows users to save contact information.
 
 ### Features
-* `Signup`
+* `Signup or Create an account`
 * `Login`
-* `Create a new contact`
-* `Retrieve a list of your contacts`
-* `Retrieve a single contact`
-* `Update a contact`
-* `Delete a contact`
+* `Add a new beneficiary`
+* `Retrieve a list of your beeficiaries`
+* `Retrieve a single beneficiary`
+* `Transfer to a beneficiary`
+* `Delete a beneficiary`
+* `Transaction tracking`
+* `Real time currency exchange rate`
 
 ### Technologies used:
 * `Javascript`
@@ -29,8 +31,8 @@ This is a Node.js project that allows users to save contact information.
 ## Usage
 To use this project, you will need to have Node.js and NPM installed. Once you have installed Node.js and NPM, you can clone this repository and install the dependencies with the following commands:
 ```
-git clone https://github.com/RevEmmanuel/hux-assessment-backend.git
-cd hux-assessment-backend
+git clone https://github.com/RevEmmanuel/Klusterthon-Fintech.git
+cd Klusterthon-Fintech
 npm install
 ```
 
@@ -44,17 +46,6 @@ npm start
 ## API
 The project has a REST API that can be accessed at the following URL:
 `http://localhost:3000/`
-
-The API has the following endpoints:
-
-POST /auth/signup
-POST /auth/login
-GET /auth/verify/:otp
-POST /contacts/create
-GET /contacts/all
-GET /contacts/:id
-PUT /contacts/update/:id
-DELETE /contacts/delete/:id
 
 ## Configuration
 The project can be configured using a .env file. The .env file should contain the following environment variables:
@@ -84,7 +75,7 @@ This project is currently hosted on railway.
 ## Documentation
 [Postman Documentation](https://documenter.getpostman.com/view/24879226/2s9YJaZ4ZS)
 [Deployed Website URL](https://hux-assessment-frontend.vercel.app/)
-[Frontend GitHub Repository](https://github.com/RevEmmanuel/hux-assessment-frontend)
+[Frontend GitHub Repository](https://github.com/Satcha-mirah/Klusterthon-Fintech-App)
 
 ## Developer & Engineer
 Adeola Adekunle
@@ -93,6 +84,12 @@ Adeola Adekunle
 * [Instagram (@deolaaxo)](https://www.instagram.com/deolaaxo/)
 * [LinkedIn (Adeola Adekunle)](https://www.linkedin.com/in/adeola-adekunle-emmanuel/)
 * [Email(Adeola Adekunle)](mailto:adeolaae1@gmail.com)
+
+Daniel Akinsanya
+* [GitHub (Dannyy2000)](https://github.com/Dannyy2000)
+* [Instagram (@badboydanny)](https://instagram.com/badboyydanny/)
+* [LinkedIn (Daniel Akinsanya)](https://www.linkedin.com/in/akinsanya-daniel/)
+* [Email(Daniel Akinsanya)](mailto:danielakinsanya665@gmail.com)
 
 ## Contributing
 If you would like to contribute to this project, please feel free to fork the repository and submit a pull request.
