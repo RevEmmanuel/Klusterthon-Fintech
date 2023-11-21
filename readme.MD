@@ -74,22 +74,29 @@ This project is currently hosted on railway.
 
 ## Documentation
 [Postman Documentation](https://documenter.getpostman.com/view/24879226/2s9YJaZ4ZS)
-[Deployed Website URL](https://hux-assessment-frontend.vercel.app/)
+[Deployed Website URL](https://klusterthon-fintech-app.vercel.app/)
 [Frontend GitHub Repository](https://github.com/Satcha-mirah/Klusterthon-Fintech-App)
 
-## Developer & Engineer
-Adeola Adekunle
+## Developers & Engineers
+Adeola Adekunle (Backend & DevOps)
 * [GitHub (RevEmmanuel)](https://github.com/RevEmmanuel)
 * [Twitter (@Adeola_Ade1)](https://twitter.com/Adeola_Ade1)
 * [Instagram (@deolaaxo)](https://www.instagram.com/deolaaxo/)
 * [LinkedIn (Adeola Adekunle)](https://www.linkedin.com/in/adeola-adekunle-emmanuel/)
 * [Email(Adeola Adekunle)](mailto:adeolaae1@gmail.com)
 
-Daniel Akinsanya
+Daniel Akinsanya (Backend & DevOps)
 * [GitHub (Dannyy2000)](https://github.com/Dannyy2000)
 * [Instagram (@badboydanny)](https://instagram.com/badboyydanny/)
 * [LinkedIn (Daniel Akinsanya)](https://www.linkedin.com/in/akinsanya-daniel/)
 * [Email(Daniel Akinsanya)](mailto:danielakinsanya665@gmail.com)
+
+Amirah Yusuf (Frontend)
+* [GitHub (Satcha-mirah)](https://github.com/Satcha-mirah)
+* [Twitter (@Satcha_Mirah)](https://twitter.com/Satcha_Mirah)
+* [Instagram (@satcha_mirah)](https://instagram.com/satcha_mirah/)
+* [LinkedIn (Amirah Yusuf)](https://www.linkedin.com/in/amirah-yusuf-372739270/)
+* [Email(Yusuf Amirah)](mailto:satchaamirah@gmail.com)
 
 ## Contributing
 If you would like to contribute to this project, please feel free to fork the repository and submit a pull request.
