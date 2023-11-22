@@ -1,11 +1,17 @@
-const { DataTypes } = require("sequelize");
-const { sq } = require("../utils/database");
+"use strict";
+const { Model, DataTypes } = require("sequelize");
+const {sq} = require("../utils/database");
 
-const VerificationOtp = sq.define('verification-otp', {
+class VerificationOtp extends Model {
+}
+
+VerificationOtp.init(
+    {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
+            unique: true
         },
         ownerEmail: {
             type: DataTypes.STRING,
@@ -25,15 +31,11 @@ const VerificationOtp = sq.define('verification-otp', {
             defaultValue: sq.literal('CURRENT_TIMESTAMP'),
         },
     },
+    {
+        sequelize: sq,
+        modelName: "VerificationOtp",
+        paranoid: false
+    }
 );
-
-
-sq.sync()
-    .then(() => {
-        console.log('Otp model synced with the database');
-    })
-    .catch((error) => {
-        console.error('Error syncing otp model:', error);
-    });
 
 module.exports = VerificationOtp;

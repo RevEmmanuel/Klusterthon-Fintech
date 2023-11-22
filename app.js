@@ -57,5 +57,4 @@ app.use(globalExceptionHandler);
 app.listen(port, async () => {
     console.log(`Starting Sequelize + Express server on port ${port}...`);
     console.log(`Server is running on port ${port}...`);
-    await testDbConnection();
 });

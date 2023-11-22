@@ -1,6 +1,7 @@
 "use strict";
 const { Model, DataTypes } = require("sequelize");
 const {sq} = require("../utils/database");
+const VerificationOtp = require("./VerificationOtp");
 
 class User extends Model {
 }
@@ -51,4 +52,6 @@ User.init(
     }
 );
 
+User.hasOne(VerificationOtp, { onDelete: "cascade", foreignKey: "userId" });
+VerificationOtp.belongsTo(User, { as: "user" })
 module.exports = User;

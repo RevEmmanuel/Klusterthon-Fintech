@@ -9,6 +9,8 @@ const IncorrectPasswordException = require("../exceptions/IncorrectPasswordExcep
 const InvalidOtpException = require("../exceptions/InvalidOtpException");
 const {sq} = require("../utils/database");
 const UsernameAlreadyExistsException = require("../exceptions/UsernameAlreadyExistsException");
+const User = require("../models/User")
+const VerificationOtp = require("../models/VerificationOtp")
 
 dotenv.config();
 const hostUrl = process.env.EXTERNAL_URL;
@@ -37,7 +39,7 @@ async function createNewUser(signupRequest) {
     );
 
     const otp = otpGenerator.generate(12, { lowerCaseAlphabets: true, upperCaseAlphabets: true, specialChars: false, digits: false });
-    await storeOTPInDatabase(email, otp);
+    await storeOTPInDatabase(email, otp, newUser.id);
 
     const mailOptions = {
         from: '"Bank App" <bank-app@gmail.com>',
@@ -92,7 +94,7 @@ async function loginUser(loginRequest) {
 
 
 async function verifyUser(otp) {
-    const foundOtp = await VerificationOtp.findOne({ where: { otp: otp } });
+    const foundOtp = await sq.models.VerificationOtp.findOne({ where: { otp: otp } });
     if (foundOtp === null) {
         throw new InvalidOtpException('Invalid or expired OTP.');
     }
@@ -128,11 +130,14 @@ async function verifyUser(otp) {
     });
 }
 
-async function storeOTPInDatabase(ownerEmail, otp) {
-    await VerificationOtp.create({
-        ownerEmail: ownerEmail,
-        otp: otp,
-    });
+async function storeOTPInDatabase(ownerEmail, otp, userId) {
+    await sq.models.VerificationOtp.create(
+        {
+            ownerEmail: ownerEmail,
+            otp: otp,
+            userId: userId
+        }
+    );
 }
 
 async function checkIfUserExists(userId) {
