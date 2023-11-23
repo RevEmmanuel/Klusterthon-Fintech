@@ -1,15 +1,13 @@
-class ContactsAppException extends Error {
+class AppException extends Error {
+  statusCode;
+  message;
 
-    statusCode;
-    message;
-
-    constructor(message, statusCode) {
-        super(message);
-        this.name = "Contacts Exception";
-        this.statusCode = statusCode;
-        this.message = message;
-    }
-
+  constructor(message, statusCode) {
+    super(message);
+    this.name = "Contacts Exception";
+    this.statusCode = statusCode;
+    this.message = message;
+  }
 }
 
-module.exports = ContactsAppException;
+module.exports = AppException;
