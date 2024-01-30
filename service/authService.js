@@ -12,6 +12,7 @@ const UsernameAlreadyExistsException = require("../exceptions/UsernameAlreadyExi
 const ContactsAlreadyExistsException = require("../exceptions/ContactAlreadyExistsException");
 const User = require("../models/User");
 const VerificationOtp = require("../models/VerificationOtp");
+const UnauthorizedException = require("../exceptions/UnauthorizedException");
 
 dotenv.config();
 const hostUrl = process.env.EXTERNAL_URL;
@@ -113,6 +114,10 @@ async function loginUser(loginRequest) {
     throw new IncorrectPasswordException("Incorrect Password!");
   }
 
+  if (!user.isVerified) {
+    throw new UnauthorizedException("Account is not verified!");
+  }
+
   const secretKey = process.env.JWT_SECRET;
   return jwt.sign({ user: user }, secretKey, { expiresIn: "24h" });
 }
@@ -136,7 +141,7 @@ async function verifyUser(otp) {
   const username = user.username;
 
   const mailOptions = {
-    from: '"Contacts App" <contacts-app@gmail.com>',
+    from: '"Bank App" <bank-app@gmail.com>',
     to: `${email}`,
     subject: "Email Verified",
     html: `
