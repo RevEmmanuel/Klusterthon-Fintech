@@ -54,11 +54,11 @@ async function createNewUser(signupRequest) {
   const mailOptions = {
     from: '"Bank App" <bank-app@gmail.com>',
     to: `${email}`,
-    subject: "Welcome to Contacts App",
+    subject: "Welcome to Bank App",
     html: `
         <h1>Hi, ${username}!</h1>
-        <h1>Welcome to Contacts App</h1>
-        <p>Your one-stop solution to your contact needs</p>
+        <h1>Welcome to Bank App</h1>
+        <p>Your one-stop solution to your financial needs</p>
         <p>We're glad to have you!</p>
         
         <p>Please click the link below to verify your account:</p>
@@ -124,7 +124,7 @@ async function verifyUser(otp) {
   const username = user.username;
 
   const mailOptions = {
-    from: '"Contacts App" <contacts-app@gmail.com>',
+    from: '"Bank App" <bank-app@gmail.com>',
     to: `${email}`,
     subject: "Email Verified",
     html: `
