@@ -6,6 +6,7 @@ node_modules/
 
 # Environment configuration (you can customize this based on your needs)
 .env
+deployment-env.unknown
 
 # Generated files
 dist/
@@ -13,3 +14,4 @@ build/
 *.min.js
 
 deployment-env
+deployment-env.unknown

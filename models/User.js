@@ -18,6 +18,23 @@ User.init(
       allowNull: false,
       unique: true,
     },
+    firstName:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName:{
+      type: DataTypes.STRING,
+      allowNull:false
+    },
+    middleName:{
+      type:DataTypes.STRING,
+      allowNull:false
+    },
+    contactInfo:{
+      type:DataTypes.STRING,
+      allowNull:false,
+      unique:true,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

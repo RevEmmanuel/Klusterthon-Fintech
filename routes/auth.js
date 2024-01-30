@@ -9,7 +9,12 @@ const authRouter = Router();
 const createUserRequest = yup.object().shape({
     username: yup.string().required('Please enter a username').min(2, 'Please enter a valid username'),
     email: yup.string().email().required('Please enter an email').min(2, 'Please enter a valid email'),
-    password: yup.string().required('Please enter a password').min(8, 'Password must be a minimum of 8 characters')
+    firstname: yup.string().required('Please enter your firstname').min(2, 'Please enter a valid firstname'),
+    lastname: yup.string().required('Please enter your lastname').min(2, 'Please enter a valid lastname'),
+    middlename: yup.string().required('Please enter your middlename').min(2, 'Please enter a valid middlename'),
+    contactinfo: yup.string().required('Phone number is required').min(14, 'Contact info must be a minimum of 14 characters')
+    .max(14, 'Contact info must not exceed 14 characters'),
+     password: yup.string().required('Please enter a password').min(8, 'Password must be a minimum of 8 characters')
 });
 
 const loginRequest = yup.object().shape({
