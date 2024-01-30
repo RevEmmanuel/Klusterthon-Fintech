@@ -11,6 +11,7 @@ const { sq } = require("../utils/database");
 const UsernameAlreadyExistsException = require("../exceptions/UsernameAlreadyExistsException");
 const User = require("../models/User");
 const VerificationOtp = require("../models/VerificationOtp");
+const UnauthorizedException = require("../exceptions/UnauthorizedException");
 
 dotenv.config();
 const hostUrl = process.env.EXTERNAL_URL;
@@ -99,6 +100,10 @@ async function loginUser(loginRequest) {
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
     throw new IncorrectPasswordException("Incorrect Password!");
+  }
+
+  if (!user.isVerified) {
+    throw new UnauthorizedException("Account is not verified!");
   }
 
   const secretKey = process.env.JWT_SECRET;
