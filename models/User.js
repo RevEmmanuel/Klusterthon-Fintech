@@ -15,21 +15,45 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: true,
+    },
+    firstName:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    lastName:{
+      type: DataTypes.STRING,
+      allowNull:true
+    },
+    middleName:{
+      type:DataTypes.STRING,
+      allowNull:true
+    },
+    contactInfo:{
+      type:DataTypes.STRING,
+      allowNull:true,
+      unique:true,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: true,
       validate: {
         isEmail: true,
       },
     },
+
+    pin:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
+    
     isVerified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

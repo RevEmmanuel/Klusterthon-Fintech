@@ -9,6 +9,7 @@ const IncorrectPasswordException = require("../exceptions/IncorrectPasswordExcep
 const InvalidOtpException = require("../exceptions/InvalidOtpException");
 const { sq } = require("../utils/database");
 const UsernameAlreadyExistsException = require("../exceptions/UsernameAlreadyExistsException");
+const ContactsAlreadyExistsException = require("../exceptions/ContactAlreadyExistsException");
 const User = require("../models/User");
 const VerificationOtp = require("../models/VerificationOtp");
 const UnauthorizedException = require("../exceptions/UnauthorizedException");
@@ -20,6 +21,10 @@ async function createNewUser(signupRequest) {
   const email = signupRequest.email;
   const username = signupRequest.username;
   const password = signupRequest.password;
+  const firstname = signupRequest.firstname;
+  const lastname = signupRequest.lastname;
+  const middlename = signupRequest.middlename;
+  const contactinfo = signupRequest.contactinfo;
 
   console.log("hkjchchjcdjcj");
 
@@ -31,23 +36,34 @@ async function createNewUser(signupRequest) {
   const usernameFound = await sq.models.Users.findOne({
     where: { username: username },
   });
+
+  const contactFound = await sq.models.Users.findOne({
+    where:{contactinfo: contactinfo},
+  });
+
   if (usernameFound) {
     throw new UsernameAlreadyExistsException("This username is already taken!");
+  }
+
+  if(contactFound){
+    throw new ContactsAlreadyExistsException("This contacts has been used");
   }
 
   const newUser = await sq.models.Users.create({
     email: email,
     password: await bcrypt.hash(password, 10),
     username: username,
+    firstName: firstname,
+    lastName: lastname,
+    middleName: middlename,
+    contactInfo: contactinfo
   });
 
   console.log(newUser);
 
-  const otp = otpGenerator.generate(12, {
-    lowerCaseAlphabets: true,
-    upperCaseAlphabets: true,
-    specialChars: false,
-    digits: false,
+  const otp = otpGenerator.generate(5, {
+  digits: true,
+  number:true
   });
   await storeOTPInDatabase(email, otp, newUser.id);
   console.log("This is my otp", otp);
@@ -55,19 +71,15 @@ async function createNewUser(signupRequest) {
   const mailOptions = {
     from: '"Bank App" <bank-app@gmail.com>',
     to: `${email}`,
-    subject: "Welcome to Bank App",
+    subject: "Welcome to Fintech App",
     html: `
         <h1>Hi, ${username}!</h1>
-        <h1>Welcome to Bank App</h1>
-        <p>Your one-stop solution to your financial needs</p>
+        <h1>Welcome to Fintech App</h1>
+        <p>Your one-stop solution to your contact needs</p>
         <p>We're glad to have you!</p>
         
-        <p>Please click the link below to verify your account:</p>
-        <a href="${hostUrl}/auth/verify/${otp}" target="_blank">Verify my account</a>
-        <br />
-        <br />
-        <p>If that doesn't work, copy the link below and paste in your browser:</p>
-        <p>${hostUrl}/auth/verify/${otp}</p>
+        <p>OTP: [Your OTP Code: ${otp}]
+        If you did not request this OTP, please disregard this email. Your account security is important to us.
         `,
   };
   console.log("This is my otp", otp);
