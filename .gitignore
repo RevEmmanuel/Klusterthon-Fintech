@@ -13,3 +13,4 @@ build/
 *.min.js
 
 deployment-env
+deployment-env.unknown

@@ -22,6 +22,8 @@ const loginRequest = yup.object().shape({
     password: yup.string().required('Please enter a password').min(8, 'Password must be a minimum of 8 characters')
 });
 
+
+
 authRouter.post('/signup', async (req, res, next) => {
     try {
         const requestBody = req.body;

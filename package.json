@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "migrate": "cross-env NODE_ENV=development npx sequelize-cli db:migrate",
     "dev": "nodemon app.js",
     "test": "jest"
   },
@@ -32,7 +33,10 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
+    "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "nodemon": "^3.0.1"
   }
+
+   
 }
